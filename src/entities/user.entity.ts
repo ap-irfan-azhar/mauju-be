@@ -1,10 +1,11 @@
-import { Entity, Column, Index, BeforeInsert, PrimaryGeneratedColumn, DeleteDateColumn } from 'typeorm';
+import { Entity, Column, Index, BeforeInsert, PrimaryGeneratedColumn, DeleteDateColumn, OneToMany, AfterLoad } from 'typeorm';
 import bcrypt from 'bcryptjs';
 import Model from './model.entity';
 import {
     IsEmail,
     Length,
 } from "class-validator"
+import { Transaction } from './transaction.entity';
 
 @Entity('users')
 export class User extends Model {
@@ -40,4 +41,8 @@ export class User extends Model {
     toJSON() {
         return { ...this, password: undefined, verified: undefined };
     }
+
+    @OneToMany(() => Transaction, transaction => transaction.user)
+    transactions!: Transaction[];
+
 }

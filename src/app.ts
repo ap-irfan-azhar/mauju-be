@@ -8,6 +8,7 @@ import { AppDataSource } from './utils/data-source';
 import AppError from './utils/appError';
 import authRouter from './routes/auth.routes';
 import userRouter from './routes/user.routes';
+import transactionRouter from './routes/transaction.routes';
 import validateEnv from './utils/validateEnv';
 import redisClient from './utils/connectRedis';
 
@@ -45,6 +46,7 @@ AppDataSource.initialize()
     // ROUTES
     app.use('/api/auth', authRouter);
     app.use('/api/users', userRouter);
+    app.use('/api/transactions', transactionRouter);
 
     // HEALTH CHECKER
     app.get('/api/health-checker', async (_, res: Response) => {
