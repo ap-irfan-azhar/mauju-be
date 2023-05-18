@@ -22,9 +22,7 @@ export const getTransactionsHandler = async (
 
     res.status(200).json({
       status: 'success',
-      data: {
-        transactions,
-      },
+      data: transactions,
     });
   } catch (err: any) {
     next(err);
@@ -45,7 +43,6 @@ export const getTransactionHandler = async (
       return next(new AppError(404, 'Transaction not found'));
     }
 
-    console.log(transaction)
 
     res.status(200).json({
       status: 'success',

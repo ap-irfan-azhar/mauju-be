@@ -38,14 +38,13 @@ export const findTransactions = async (params: GetTransactionsParams, user: User
 
   const transactions = await transactionRepository
     .createQueryBuilder('transaction')
-    .leftJoinAndSelect('transaction.user', 'user')
     .where(where)
     .skip((page - 1) * limit)
     .take(limit)
     .getManyAndCount();
 
   return {
-    data: transactions[0],
+    transactions: transactions[0],
     meta: {
       total_items: transactions[1],
       total_pages: Math.ceil(transactions[1] / limit),
