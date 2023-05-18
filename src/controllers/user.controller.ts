@@ -1,10 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import {
-    findUserRoleExclude,
-    deleteUserById,
-    restoreUserById,
     updateUserById,
-    findUserById, createUser
+    createUser
 } from '../services/user.service';
 import { CreateUserInput } from '../schemas/user.schema';
 import AppError from '../utils/appError';

@@ -23,18 +23,6 @@ export const findUser = async (query: Object) => {
     return await userRepository.findOneBy(query);
 };
 
-export const findUserRoleExclude = async (role: string) => {
-    return await userRepository.createQueryBuilder("user").where(" user.deleted_at IS NULL").getMany();
-}
-
-export const deleteUserById = async (userId: string) => {
-    return await userRepository.createQueryBuilder().softDelete().where("id = :id", { id: userId }).execute();
-}
-
-export const restoreUserById = async (userId: string) => {
-    return await userRepository.createQueryBuilder().restore().where("id = :id", { id: userId }).execute();
-}
-
 export const updateUserById = async (input: DeepPartial<User>) => {
     return await userRepository.update({ id: input.id }, userRepository.create(input));
 }
