@@ -29,5 +29,8 @@ yarn migrate:up
 yarn start
 ```
 
+## Postman Documentation
+[Postman Documentation](https://documenter.getpostman.com/view/20281399/2s93kz6kQw)
+[Postman Collection](../postman-collection/Mauju.postman_collection.json)
 
 
